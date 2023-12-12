@@ -1,3 +1,31 @@
+@use 'variaveis';
+@use 'hero';
+
+@font-face{
+    font-family: Avenir;
+    src: url(../../assets/fonts/Avenir-Regular.woff2);
+    font-weight: 400;
+}
+
+@font-face{
+    font-family: Avenir;
+    src: url(../../assets/fonts/Avenir-Bold.woff2);
+    font-weight: 700;
+}
+
+@mixin title($fontsize: 40px){
+    @include text ($fontsize);
+    color: variaveis.$corTextoSecundario;
+}
+
+@mixin text($fontSize: 16px){           //Note que meu aqui eu não adiciono apenas uma medida como argumento, mas sim ela dentro de uma variável
+    font-size: $fontSize;               //Isso porque no linhe-height eu uso uma "medida relativa", assim eu declaro que font-size = "a" e que
+    line-height: $fontSize + 10px;      //line-height = "a + 10px", então independente do valor de font-size, line-height sempre será 10px maior.
+    color: variaveis.$corTextoPrincipal;
+}
+
+////////////////////////////////
+
 *{
     margin: 0;
     padding: 0;
@@ -5,5 +33,36 @@
 }
 
 body{
-    background-color: blue;
+    background-color: variaveis.$corDeFundo;
+    font-family: Avenir, sans-serif;
+}
+
+.title--big{
+    @include text(44px);
+}
+
+.title{
+    @include text;
+}
+
+.title--small{
+    @include text(28px);
+}
+
+.text--big{
+    @include text(18px);                //nesse caso puxo o mixin e passo um novo valor do argumento, que é 18px, logo, o font-size do que tiver
+}                                       //a classe text--big será de 18px e line-height 10px acima disso, ou seja, 28px
+
+.text{
+    @include text;                      //seguindo a mesma logica aqui eu tenho 16px para 26px já que não alterei o valor do argumento inicial
+}
+
+.text--small{
+    @include text(12px);                //e aqui terei 12px de font-size para 22px de line-height
+}
+
+.link-text{
+    @include text(18px);
+    color: variaveis.$corTextoSecundario;
+    text-decoration: underline;
 }
