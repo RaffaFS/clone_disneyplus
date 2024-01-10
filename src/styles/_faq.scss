@@ -21,6 +21,11 @@
                 cursor: pointer;
                 position: relative;
 
+                @media (max-width: 1023px){
+                    font-size: 16px;
+                    padding-right: 64px;
+                }
+
                 &::after{                   //com esse pseudo seletor eu adiciono algo "depois" do conteúdo do seletor raiz. nesse caso, com
                     content: '+';           //content, apenas um sinal de adição. 
                     position: absolute;

@@ -9,12 +9,24 @@
         display: flex;
         justify-content: space-around;
         margin-top: 50px;
+
+        @media (max-width: 1023px){
+            display: block;
+        }
+
+        .button{
+            margin-top: 24px;
+        }
         
         &__item{
             text-align: center;
             padding: 60px 44px 44px;
             max-width: 380px;
             width: 100%;
+
+            @media (max-width: 1023px){
+                margin: 0 auto;
+            }
 
             &:nth-child(2){                     //uso esse pseudo-seletor para referenciar a "segunda criança" (plans__list__item)
                 background-image: url(../images/fundo_combo_plus.png);
@@ -24,6 +36,10 @@
 
             img{
                 height: 83px;
+
+                @media (max-width: 1023px){
+                    height: 64px;
+                }
             }
 
             strong{

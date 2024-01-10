@@ -46,26 +46,50 @@ body{
 
 .title--big{
     @include title(44px);
+
+    @media (max-width: 1023px){
+        @include title(26px);
+    }
 }
 
 .title{
     @include title;
+
+    @media (max-width: 1023px){
+        @include title(24px);
+    }
 }
 
 .title--small{
     @include title(28px);
+
+    @media (max-width: 1023px){
+        @include title(22px);
+    }
 }
 
 .text--big{
     @include text(18px);                //nesse caso puxo o mixin e passo um novo valor do argumento, que é 18px, logo, o font-size do que tiver
-}                                       //a classe text--big será de 18px e line-height 10px acima disso, ou seja, 28px
+                                        //a classe text--big será de 18px e line-height 10px acima disso, ou seja, 28px
+    @media (max-width: 1023px){
+        @include text(15px);
+    }                                
+}                                      
 
 .text{
     @include text;                      //seguindo a mesma logica aqui eu tenho 16px para 26px já que não alterei o valor do argumento inicial
+
+    @media (max-width: 1023px){
+        @include text(14px);
+    }
 }
 
 .text--small{
     @include text(12px);                //e aqui terei 12px de font-size para 22px de line-height
+
+    @media (max-width: 1023px){
+        @include text(11px);
+    }
 }
 
 .link-text{
@@ -119,6 +143,10 @@ body{
     grid-template-columns: 1fr 1fr;
     align-items: center;
 
+    @media (max-width: 1023px){
+        display: block;
+    }
+
     img{
         max-width: 100%;
     }
@@ -148,6 +176,12 @@ body{
             display: flex;
             flex-direction: column;
             justify-content: center;
+
+            @media (max-width: 1023px){
+                position: relative;
+                left: 0;
+                width: 100%;
+            }
         }
     }
 }
