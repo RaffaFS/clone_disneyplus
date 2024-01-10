@@ -1,5 +1,22 @@
 document.addEventListener('DOMContentLoaded', function () {
     const buttons = document.querySelectorAll('[data-tab-button]');
+    const questions = document.querySelectorAll('[data-faq-question]');
+
+    //pega a altura do Hero
+    const heroSection = document.querySelector('.hero');
+    const alturaHero = heroSection.clientHeight;
+
+    //faz uma verificação com a posição do scroll para ocultar o header apenas enquanto o usuários estiver no hero
+    window.addEventListener('scroll', function(){
+        const posicaoAtual = window.scrollY
+
+        if (posicaoAtual < alturaHero) {
+            ocultaElementosHeader();
+        }
+        else{
+            exibeElementosHeader();
+        }
+    })
 
     // Oculta todas as abas chamando a função
     hideAllTabs();
@@ -23,7 +40,21 @@ document.addEventListener('DOMContentLoaded', function () {
             botao.target.classList.add('shows__tabs__button--is-active');
         })
     }
+
+    for (let i = 0; i < questions.length; i++){
+        questions[i].addEventListener('click', abreFechaResposta);
+    }
 });
+
+function ocultaElementosHeader(){
+    const header = document.querySelector('header');
+    header.classList.add('header--is-hidden')
+}
+
+function exibeElementosHeader(){
+    const header = document.querySelector('header');
+    header.classList.remove('header--is-hidden')
+}
 
 function removeButtonActive() {
     const buttons = document.querySelectorAll('[data-tab-button]');
@@ -39,4 +70,11 @@ function hideAllTabs() {
     for (let i = 0; i < tabsContainer.length; i++) {
         tabsContainer[i].classList.remove('shows__list--is-active');
     }
+}
+
+function abreFechaResposta(elemento){
+    const classe = 'faq__questions__item--is-open';
+    const elementoPai = elemento.target.parentNode;
+
+    elementoPai.classList.toggle(classe);
 }

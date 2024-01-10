@@ -1,0 +1,58 @@
+.faq{
+    padding: 5.6vw;
+
+    h2{
+        text-align: center;
+        margin-bottom: 24px;
+    }
+
+    &__questions{
+        list-style: none;
+
+        &__item{
+            background-color: #13151d;
+            margin-bottom: 16px;
+
+            &__question{
+                color: #fff;
+                font-size: 20px;
+                padding: 24px;
+                display: block;
+                cursor: pointer;
+                position: relative;
+
+                &::after{                   //com esse pseudo seletor eu adiciono algo "depois" do conteúdo do seletor raiz. nesse caso, com
+                    content: '+';           //content, apenas um sinal de adição. 
+                    position: absolute;
+                    top: 0;
+                    right: 24px;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    font-size: 40px;
+                }
+            }
+
+            &__answer{
+                height: 0;          //com height 0 digo que o container dessa classe (nesse caso uma div), tem 0px de altura porém, por padrão,
+                overflow: hidden;   //seu conteúdo ainda será visível, por isso uso overflow hidden, ou seja, o que "fluir além" da medida da
+                padding: 0 24px;    //div, será escondido
+                transition: all ease 1s;
+            }                       
+
+            &--is-open{                                 //quando esse modificador estiver presente as regras abaixo serão aplicadas (basicamente,
+                                                        //o content do pseudo seletor de question passará a ser um sinal de subtração e o conteúdo 
+                .faq__questions__item__question::after{                 //de answer passará a ser exibido, o funcionamento é no main.js)
+                    content: '-';
+                    font-size: 70px;
+                }
+
+                .faq__questions__item__answer{
+                    height: auto;
+                    padding-bottom: 24px;
+                    transition: all ease 1s;
+                }   
+            }
+        }
+    }
+}
